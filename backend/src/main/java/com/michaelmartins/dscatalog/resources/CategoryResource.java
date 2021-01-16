@@ -27,7 +27,7 @@ public class CategoryResource {
                                                      @RequestParam(value = "orderBy", defaultValue = "name") String orderBy,
                                                      @RequestParam(value = "direction", defaultValue = "ASC") String direction) {
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
-        return ResponseEntity.ok(service.findAll(pageRequest));
+        return ResponseEntity.ok(service.findAllPaged(pageRequest));
     }
 
     @GetMapping(value = "/{id}")

@@ -1,5 +1,7 @@
 package com.michaelmartins.dscatalog.domain.entities;
 
+import com.michaelmartins.dscatalog.dto.ProductDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -51,6 +53,14 @@ public class Product implements Serializable {
         this.price = price;
         this.description = description;
         this.imageUrl = imageUrl;
+    }
+
+    public Product(ProductDTO dto) {
+        this.id = dto.getId();
+        this.name = dto.getName();
+        this.price = dto.getPrice();
+        this.description = dto.getDescription();
+        this.imageUrl = dto.getImageUrl();
     }
 
     public Long getId() {
