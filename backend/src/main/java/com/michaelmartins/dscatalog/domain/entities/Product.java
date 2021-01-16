@@ -47,14 +47,6 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(Long id, String name, BigDecimal price, String description, String imageUrl) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.imageUrl = imageUrl;
-    }
-
     public Product(ProductDTO dto) {
         this.id = dto.getId();
         this.name = dto.getName();
