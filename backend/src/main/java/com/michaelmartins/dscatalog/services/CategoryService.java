@@ -1,5 +1,6 @@
 package com.michaelmartins.dscatalog.services;
 
+import com.michaelmartins.dscatalog.domain.entities.Category;
 import com.michaelmartins.dscatalog.dto.CategoryDTO;
 import com.michaelmartins.dscatalog.exceptions.ResourceEntityNotFoundException;
 import com.michaelmartins.dscatalog.repositories.CategoryRepository;
@@ -30,5 +31,11 @@ public class CategoryService {
         return repository.findById(id)
                 .map(CategoryDTO::new)
                 .orElseThrow(() -> new ResourceEntityNotFoundException(format("Categoria de id '%s' não existe.", id)));
+    }
+
+    @Transactional
+    public CategoryDTO create(CategoryDTO dto) {
+        Category category = new Category(dto);
+        return new CategoryDTO(repository.save(category));
     }
 }

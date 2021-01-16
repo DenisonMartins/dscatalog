@@ -3,11 +3,10 @@ package com.michaelmartins.dscatalog.resources;
 import com.michaelmartins.dscatalog.dto.CategoryDTO;
 import com.michaelmartins.dscatalog.services.CategoryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -28,5 +27,12 @@ public class CategoryResource {
     @GetMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto) {
+        CategoryDTO categoryDTO = service.create(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(categoryDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(categoryDTO);
     }
 }
