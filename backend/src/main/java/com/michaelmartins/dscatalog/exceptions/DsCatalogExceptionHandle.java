@@ -22,4 +22,16 @@ public class DsCatalogExceptionHandle {
                 .build();
         return ResponseEntity.status(notFound).body(error);
     }
+
+    @ExceptionHandler(DatabaseException.class)
+    public ResponseEntity<StandardError> handleEntityNotFound(DatabaseException exception, HttpServletRequest request) {
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        StandardError error = StandardError.Builder.newBuilder()
+                .status(badRequest.value())
+                .error("Database Integrity")
+                .message(exception.getMessage())
+                .path(request.getServletPath())
+                .build();
+        return ResponseEntity.status(badRequest).body(error);
+    }
 }
