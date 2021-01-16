@@ -2,8 +2,6 @@ package com.michaelmartins.dscatalog.resources;
 
 import com.michaelmartins.dscatalog.dto.CategoryDTO;
 import com.michaelmartins.dscatalog.services.CategoryService;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
