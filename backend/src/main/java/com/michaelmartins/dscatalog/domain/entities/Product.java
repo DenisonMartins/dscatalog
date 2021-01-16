@@ -61,6 +61,7 @@ public class Product implements Serializable {
         this.price = dto.getPrice();
         this.description = dto.getDescription();
         this.imageUrl = dto.getImageUrl();
+        this.categories.clear();
     }
 
     public Long getId() {
@@ -136,5 +137,9 @@ public class Product implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public void adicionar(Category category) {
+        this.categories.add(category);
     }
 }
