@@ -1,12 +1,12 @@
 import React from 'react';
 import './core/assets/styles/custom.scss';
 import './app.scss';
-import Navbar from "./core/components/navbar/Navbar";
+import Routes from "./Routes";
 
 function App() {
-  return (
-    <Navbar />
-  );
+    return (
+        <Routes />
+    );
 }
 
 export default App;
