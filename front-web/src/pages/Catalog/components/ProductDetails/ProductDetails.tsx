@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useParams } from "react-router-dom";
 import { ReactComponent as ArrowIcon } from "../../../../core/assets/images/arrow.svg";
-import { ReactComponent as ProductImage } from "../../../../core/assets/images/product.svg";
 import "./styles.scss";
 import ProductPrice from "../../../../core/components/ProductPrice/ProductPrice";
+import {makeRequest} from "../../../../core/utils/request";
+import {ProductModel} from "../../../../core/types/Product";
 
 type ProductDetailsType = {
     idProduct: string
@@ -12,7 +13,13 @@ type ProductDetailsType = {
 const ProductDetails = () => {
 
     const { idProduct } = useParams<ProductDetailsType>();
-    console.log(idProduct);
+    const [product, setProduct] = useState<ProductModel>();
+
+    useEffect(() => {
+        makeRequest({
+            url: `/products/${idProduct}`
+        }).then(response => setProduct(response.data));
+    }, [idProduct]);
 
     return (
         <div className="product-details-container">
@@ -23,20 +30,20 @@ const ProductDetails = () => {
                 </Link>
                 <div className="row">
                     <div className="col-6 pr-5">
-                        <div className="product-details-card text-center">
-                            <ProductImage className="product-details-image" />
+                        <div className="product-details-card text-center ">
+                            <img src={product?.imageUrl} alt={product?.name} className="product-details-image"/>
                         </div>
                         <h1 className="product-details-name">
-                            Title do product
+                            {product?.name}
                         </h1>
-                        <ProductPrice price="2.900,00"/>
+                        {product?.price && <ProductPrice price={product?.price} />}
                     </div>
                     <div className="col-6 product-details-card">
                         <h1 className="product-description-title">
-                            Descrição do produto
+                            {product?.name}
                         </h1>
                         <p className="product-description-subtitle">
-                            subtitle
+                            {product?.description}
                         </p>
                     </div>
                 </div>
