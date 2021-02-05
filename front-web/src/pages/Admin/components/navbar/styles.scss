@@ -1,0 +1,27 @@
+.admin-nav-container {
+  width: 300px;
+  background-color: white;
+  height: calc(100vh - 70px);
+}
+
+.admin-nav-item {
+  height: 80px;
+  display: block flex;
+  border-bottom: 1px solid lightgray;
+  align-items: center;
+  padding-left: 40px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -.015em;
+  color: darkgray;
+
+  &.active {
+    background: deepskyblue;
+    color: blue;
+  }
+
+  &:hover {
+    color: blue;
+  }
+}
