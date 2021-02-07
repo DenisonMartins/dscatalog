@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import {ReactComponent as ArrowIcon} from "core/assets/images/arrow.svg";
 import "./styles.scss";
-import ProductPrice from "core/components/ProductPrice/ProductPrice";
+import Index from "core/components/ProductPrice";
 import {makeRequest} from "core/utils/request";
 import {ProductModel} from "core/types/Product";
 import ProductInfoLoader from "../Loaders/ProductInfoLoader";
@@ -42,7 +42,7 @@ const ProductDetails = () => {
                                 <h1 className="product-details-name">
                                     {product?.name}
                                 </h1>
-                                {product?.price && <ProductPrice price={product?.price}/>}
+                                {product?.price && <Index price={product?.price}/>}
                             </div>
                         </>
                     )}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import ProductPrice from "core/components/ProductPrice/ProductPrice";
+import Index from "core/components/ProductPrice";
 import {ProductModel} from "core/types/Product";
 
 type ProductCardProps = {
@@ -14,7 +14,7 @@ const ProductCard = ({ product }: ProductCardProps) => (
             <h6 className="product-name">
                 {product.name}
             </h6>
-            <ProductPrice price={product.price} />
+            <Index price={product.price} />
         </div>
     </div>
 );

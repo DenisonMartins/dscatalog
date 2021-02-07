@@ -1,14 +1,14 @@
 import React from "react";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Home from "./pages/Home/Home";
-import Catalog from "./pages/Catalog/Catalog";
-import Admin from "./pages/Admin/Admin";
-import Navbar from "./core/components/Navbar/Navbar";
-import ProductDetails from "./pages/Catalog/components/ProductDetails/ProductDetails";
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import Admin from "./pages/Admin";
+import NavBar from "./core/components/Navbar";
+import ProductDetails from "./pages/Catalog/components/ProductDetails";
 
 const Routes = () => (
     <BrowserRouter>
-        <Navbar />
+        <NavBar />
         <Switch>
             <Route path="/" exact>
                 <Home />
@@ -19,6 +19,7 @@ const Routes = () => (
             <Route path="/products/:idProduct">
                 <ProductDetails />
             </Route>
+            <Redirect from="/admin" to="/admin/products" exact />
             <Route path="/admin">
                 <Admin />
             </Route>

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProductCard from "./components/ProductCard";
 import {Link} from "react-router-dom";
 import {makeRequest} from "core/utils/request";
 import {ProductsResponse} from "core/types/Product";
 import ProductCardLoader from "./components/Loaders/ProductCardLoader";
-import Pagination from "core/components/Pagination/Pagination";
+import Index from "core/components/Pagination";
 import "./styles.scss";
 
 const Catalog = () => {
@@ -40,7 +40,7 @@ const Catalog = () => {
                 )}
             </div>
             {productsResponse && (
-                <Pagination
+                <Index
                     totalPages={productsResponse.totalPages}
                     activePage={activePage}
                     onChange={page => setActivePage(page)}
