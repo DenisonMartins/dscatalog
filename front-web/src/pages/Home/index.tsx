@@ -1,12 +1,12 @@
 import React from "react";
 import { ReactComponent as MainImage} from 'core/assets/images/main-image.svg';
 import './styles.scss';
-import Index from "core/components/ButtonIcon";
+import ButtonIcon from "core/components/ButtonIcon";
 import { Link } from "react-router-dom";
 
 const Home = () => (
     <div className="home-container">
-        <div className="row home-content card-base, border-radius-20">
+        <div className="row home-content card-base border-radius-20">
             <div className="col-6">
                 <h1 className="text-title">
                     Conheça o melhor <br /> catálogo de produtos
@@ -15,7 +15,7 @@ const Home = () => (
                     Ajudaremos você a encontrar os melhores <br/> produtos disponíveis no mercado.
                 </p>
                 <Link to="/products">
-                    <Index text="inicie agora sua busca"/>
+                    <ButtonIcon text="inicie agora sua busca"/>
                 </Link>
             </div>
             <div className="col-6">

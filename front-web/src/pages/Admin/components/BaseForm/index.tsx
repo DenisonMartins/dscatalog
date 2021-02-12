@@ -29,7 +29,6 @@ const BaseForm = ({ title, children } : BaseFormProps) => {
                 </button>
                 <button
                     className="btn btn-primary border-radius-10"
-
                 >
                     CADASTRAR
                 </button>
