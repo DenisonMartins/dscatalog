@@ -9,6 +9,7 @@ public class FieldMessage {
     }
 
     public FieldMessage(String fieldMessage, String message) {
+        super();
         this.fieldMessage = fieldMessage;
         this.message = message;
     }

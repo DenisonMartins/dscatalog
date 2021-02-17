@@ -1,6 +1,7 @@
 package com.michaelmartins.dscatalog.dto;
 
 import com.michaelmartins.dscatalog.domain.entities.User;
+import com.michaelmartins.dscatalog.exceptions.validation.UserInsertValid;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+@UserInsertValid
 public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
