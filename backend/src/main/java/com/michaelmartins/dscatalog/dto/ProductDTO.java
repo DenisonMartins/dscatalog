@@ -3,6 +3,8 @@ package com.michaelmartins.dscatalog.dto;
 import com.michaelmartins.dscatalog.domain.entities.Category;
 import com.michaelmartins.dscatalog.domain.entities.Product;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,8 +16,14 @@ public class ProductDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @NotBlank(message = "Campo obrigatório")
     private String name;
+
+    @Positive(message = "O preço deve ser valor positivo")
     private BigDecimal price;
+
+    @NotBlank(message = "Campo obrigatório")
     private String description;
     private String imageUrl;
 
