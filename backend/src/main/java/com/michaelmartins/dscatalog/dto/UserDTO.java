@@ -1,7 +1,8 @@
 package com.michaelmartins.dscatalog.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.michaelmartins.dscatalog.domain.entities.User;
-import com.michaelmartins.dscatalog.exceptions.validation.UserInsertValid;
+import com.michaelmartins.dscatalog.exceptions.validation.UserValid;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -9,7 +10,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@UserInsertValid
+@UserValid
 public class UserDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,6 +23,8 @@ public class UserDTO implements Serializable {
 
     @Email(message = "Favor informar um email válido")
     private String email;
+
+    @JsonIgnore
     private String password;
 
     private Set<RoleDTO> roles = new HashSet<>();

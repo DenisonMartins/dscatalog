@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/products")
+@RequestMapping(value = "/users")
 public class UserResource {
 
     private final UserService service;
