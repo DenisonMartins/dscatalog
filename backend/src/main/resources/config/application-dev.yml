@@ -22,3 +22,11 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+security:
+  oauth2:
+    client:
+      client-id: dscatalog
+      client-secret: dscatalog123
+jwt:
+  secret: MY-JWT-SECRET
+  duration: 86400

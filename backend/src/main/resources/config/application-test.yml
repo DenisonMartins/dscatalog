@@ -6,3 +6,11 @@ spring:
   h2:
     console:
       enabled: true
+security:
+  oauth2:
+    client:
+      client-id: dscatalog
+      client-secret: dscatalog123
+jwt:
+  secret: MY-JWT-SECRET
+  duration: 86400
