@@ -11,6 +11,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +23,7 @@ import javax.persistence.EntityNotFoundException;
 import static java.lang.String.format;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository repository;
     private final RoleRepository roleRepository;
@@ -80,5 +83,10 @@ public class UserService {
         for (RoleDTO roleDtos : dto.getRoles()) {
             user.adicionar(roleRepository.getOne(roleDtos.getId()));
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Email not found"));
     }
 }
