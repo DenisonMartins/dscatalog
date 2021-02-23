@@ -17,6 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud-dependencies.version>Hoxton.SR10</spring-cloud-dependencies.version>
+        <springdoc-openapi.version>1.5.4</springdoc-openapi.version>
     </properties>
 
     <dependencies>
@@ -46,6 +47,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--   DOCS     -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc-openapi.version}</version>
+        </dependency>
+
+        <!--   TESTE    -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
