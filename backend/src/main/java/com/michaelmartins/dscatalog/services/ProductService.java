@@ -1,5 +1,6 @@
 package com.michaelmartins.dscatalog.services;
 
+import com.michaelmartins.dscatalog.domain.entities.Category;
 import com.michaelmartins.dscatalog.domain.entities.Product;
 import com.michaelmartins.dscatalog.dto.CategoryDTO;
 import com.michaelmartins.dscatalog.dto.ProductDTO;
@@ -15,8 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 import static java.lang.String.format;
+import static java.util.Collections.singletonList;
 
 @Service
 public class ProductService {
@@ -30,8 +33,10 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public Page<ProductDTO> findAllPaged(PageRequest pageRequest) {
-        return repository.findAll(pageRequest).map(ProductDTO::new);
+    public Page<ProductDTO> findAllPaged(Long idCategory, String name, PageRequest pageRequest) {
+        List<Category> categories = idCategory == 0 ? null : singletonList(categoryRepository.getOne(idCategory));
+        Page<Product> products = repository.find(categories, name, pageRequest);
+        return products.map(ProductDTO::new);
     }
 
     @Transactional(readOnly = true)
